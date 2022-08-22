@@ -6,7 +6,7 @@ services:
     ports:
       - 1234:5432
     env_file:
-      -back-end/.env
+      - back-end/.env
     volumes:
       - pg:/var/lib/postgresql/data
 
