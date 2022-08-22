@@ -1,0 +1,18 @@
+name: Pull Request
+on: [pull_request]
+jobs:
+  PullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+      - name: Crate a new env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_POSTGRES_USER: "postgres"
+          envkey_POSTGRES_PASSWORD: "postgres"
+          envkey_POSTGRES_DB: "students-test"
+          envkey_DATABASE_URL: "postgresql://postgres:postgres@postgres_driven_ops_db:5432/students_test_DB"
+          file_name: "back-end/.env.test"
+      - name: Run tests
+        run: docker-compose -f docker-compose-tests.yml run node_driven_ops_app npm run test
