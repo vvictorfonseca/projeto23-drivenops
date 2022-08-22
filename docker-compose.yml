@@ -34,7 +34,7 @@ services:
     volumes:
       - build_react:/var/www/html
     depends_on:
-      - postgres_driven_ops_db4
+      - postgres_driven_ops_db
       - node_driven_ops_app
       - react_driven_ops_app
 
